@@ -1,0 +1,40 @@
+<!-- review created or attempted tests -->
+<div>
+        <div ng-repeat="question in questions">
+        <div>
+           <h2>Question</h2>
+           <p>{{question.name}}</p>
+       </div>
+   
+       <div>
+           <h2>Score</h2>
+           <p> {{question.score}}</p>
+       </div>
+   
+       <div>
+               <h2>Options</h2>
+               <ul>
+               <li ng-repeat="option in question.options">
+                   <span>{{option}}</span>
+       
+               </li>
+               </ul>     
+       </div>   
+                   
+       <div>
+           <h2>Correct Answer</h2>
+           <p> {{question.correct}}</p> 
+       </div> 
+   
+       <div ng-show="loggedInS">
+           <h2>Your Answer</h2>
+           <p> {{question.chosen}}</p>
+       </div>
+       
+   
+        
+       </div>
+     
+   
+   </div>
+   

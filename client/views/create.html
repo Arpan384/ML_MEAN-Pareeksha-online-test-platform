@@ -1,0 +1,60 @@
+<!-- create new test -->
+
+<div class="container" id="create">
+
+        <div id="section1" ng-show="!crudFlag">
+        <label for="testName"><strong>Test Name</strong></label><input ng-model="test.name" id="testName" class="form-control"  type="text" placeholder="Type Test Name" ><br>
+        
+        <label for="testDuration"><strong>Test Duration</strong></label><input ng-model="test.duration" id="testDuration" type="time" ><br>
+        
+        <label for="testCategory"><strong> Category</strong></label><input ng-model="test.category" id="testCategory" type="text" placeholder="Type Test Category"><br><br>
+        
+        <button ng-click="showCrud()" id="Tcreate">Create</button><br><br>
+        </div>
+        
+        <div id="section2" ng-show="crudFlag">
+        
+            <label for="name"><strong>Name</strong></label><textarea ng-model="ques.name" id="name" placeholder="Type Question Here" class='form-control' rows="6" cols="20"></textarea><br>
+            <br>
+            <div>
+                <ul>
+                    <li ng-repeat="option in ques.options">
+                        <p><span>{{option}}</span><button ng-click="removeOption(option)">Delete</button></p> 
+                        </li>
+                </ul>
+            </div>
+            <br>
+            <div>
+            <label for="option"><strong>Option </strong></label><input ng-model="ques.opt" id="option" type="text" placeholder="Type Option" class="form-control">
+            <button ng-click="addOption()">Add </button>
+           </div>
+        <br>
+        <div>
+            <label for="correctAns"><strong>Correct Answer</strong></label>
+            <input ng-model="ques.correct" id="correctAns">
+        </div>  
+        
+             <label for="score"><strong>Score</strong></label><input ng-model="ques.score" id="score" type="text" placeholder="Type score" class="form-control">  
+               <br><br>
+                <button ng-click="addQues()">Add Question</button>
+                <button ng-click="clear()">Clear</button>
+                <button ng-click="clearAll()">Clear All</button><br><br>
+            </div>
+                <div>
+                        <h2>Total Records</h2>
+                     
+                        <h2> <strong> Name</strong>  <strong>Score</strong></h2>
+                      
+                      
+                             <ul>
+                                  <li ng-repeat="question in questions">
+                                    <span>{{question.name}}</span>
+                                    <span>{{question.score}}</span>
+                                    <button ng-click="removeQues(question.name)">Delete</button>
+                                     <button ng-click="editQues(question.name)">Update</button>
+                                 </li>
+                             </ul>
+                                            
+                </div>
+            </div>
+              

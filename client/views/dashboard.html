@@ -1,0 +1,117 @@
+<!-- update password, fetch tests -->
+<div id="dashboard">
+    <!-- <div ng-include="'views/nav.html'"></div> -->
+    <div id="#dashboard">
+            <div class="container">
+                <div id="teacher" ng-show="loggedInT">
+                    <h3>Tests</h3>
+                    <div id="" ng-repeat="test in tests">
+                            <div class='form-group'>
+                                    <label for="testname">Name:</label>
+                                        <span>{{test.name}}</span>
+                             </div>
+                             <div class='form-group'>
+                                    <label for="duration">Duration:</label>
+                                        <span>{{test.duration}} seconds</span>
+                             </div>
+                             <div>
+                                <h4>Categories</h4>
+                                <span ng-repeat="category in test.category">
+                                    {{category}} 
+                                </span>
+                             </div>
+                             <button ng-click="review(test._id)" id="review" class='btn btn-primary mr-2'>Review</button>
+                             <button ng-click="delete(test._id)" id="delete" class='btn btn-primary mr-2'>Delete</button>
+                    </div>
+    
+                    <button ng-click="create()" id="create" class='btn btn-primary mr-2'>Create</button>
+                    <button  ng-click="profile()" id="profile" ng-model="userprofile" class='btn btn-primary mr-2'>View Profile</button>
+                   
+    
+                </div>
+                <div id="student" ng-show="loggedInS">
+                    <h1>Student</h1>
+                    <div id="">
+                        <!-- <button ng-click="attempted()" id="attempted" ng-model="attempted" class='btn btn-primary mr-2'>Attempted Tests</button> -->
+                        <h3>Attempted</h3>
+                        <div id="" ng-repeat="test in attempted">
+                                <div class='form-group'>
+                                        <label for="testname">Name:</label>
+                                            <span>{{test.name}}</span>
+                                 </div>
+                                 <div class='form-group'>
+                                        <label for="duration">Duration:</label>
+                                            <span>{{test.duration}} seconds</span>
+                                 </div>
+                                 <div>
+                                    <h4>Categories</h4>
+                                    <span ng-repeat="category in test.category">
+                                        {{category}} 
+                                    </span>
+                                 </div>
+                                 <button ng-click="review(test._id)" id="review" class='btn btn-primary mr-2'>Review</button>
+                                 <!-- <button ng-click="delete(testid)" id="delete" class='btn btn-primary mr-2'>Delete</button> -->
+                        </div>
+                    </div>
+                    <div id="">
+                        <!-- <button ng-click="unattempted()" id="unattempted" ng-model="unattempted" class='btn btn-primary mr-2'>Unattempted Tests</button> -->
+                        <h3>Unattempted</h3>
+                        <div id="" ng-repeat="test in unattempted">
+                                <div class='form-group'>
+                                        <label for="testname">Name:</label>
+                                            <span>{{test.name}}</span>
+                                 </div>
+                                 <div class='form-group'>
+                                        <label for="duration">Duration:</label>
+                                            <span>{{test.duration}} seconds</span>
+                                 </div>
+                                 <div>
+                                    <h4>Categories</h4>
+                                    <span ng-repeat="category in test.category">
+                                        {{category}} 
+                                    </span>
+                                 </div>
+                                 <button ng-click="attempt(test._id)" id="review" class='btn btn-primary mr-2'>Review</button>
+                                 <!-- <button ng-click="delete(testid)" id="delete" class='btn btn-primary mr-2'>Delete</button> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="updatePwd">
+                        <div class='form-group'>
+                                <label for="oldPwd">Password:</label>
+                                <input ng-model='userUp.oldPassword' id="oldPassword" type="password" class='form-control' placeholder="Type your Password here">
+                        </div>
+                        <div class='form-group'>
+                                <label for="newPwd">New Password:</label>
+                                <input ng-model='userUp.newPassword' id="newPassword" type="password" class='form-control' placeholder="Type your New Password here">
+                        </div>
+                        <div class='form-group'>
+                                <label for="confirmPwd">Confirm Password:</label>
+                                <input ng-model='userUp.confirmPassword' id="confirmPassword" type="password" class='form-control' placeholder="Confirm Password">
+                        </div>
+    
+                        <button ng-click="update()" id="submit" ng-model="submit" class='btn btn-primary mr-2'>Update</button>
+                   </div>
+
+                   <div id="">
+                        <div class='form-group'>
+                                <label for="name">Name:</label>
+                                    <span>{{profile.username}}</span>
+                         </div>
+                         <div class='form-group'>
+                                <label for="email">Email:</label>
+                                    <span>{{profile.email}}</span>
+                         </div>
+                         <div class='form-group'>
+                                <label for="role">Role:</label>
+                                    <span>{{profile.role}}</span>
+                         </div>
+
+                         <button ng-click="update()" id="update" ng-model="changePwd" class='btn btn-primary mr-2'>Change Password</button>
+                </div>
+            </div>
+        </div>
+
+        {{attempted}}
+</div>

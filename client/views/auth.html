@@ -1,0 +1,98 @@
+<!-- login, register user -->
+<div class="container" id="auth">
+      <div ng-show="error">{{error}}</div>
+        <div id="content">
+           <div class="container">
+                 <div class="row">
+                    <div class="col-md-9">
+                        <div class="row justify-content-between">
+
+                            </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div id="section1">
+                            <h1>Register</h1>
+                            <div class='form-group'>
+                                <label for="username">Username:</label>
+                                    <input ng-model='userR.username' type="text" class='form-control' placeholder="Type your name here">
+                                                        
+                            </div>
+                                            
+                            <div class='form-group'>
+                                <label for="password">Password:</label>
+                                    <input ng-model='userR.password' class='form-control' type="password" placeholder="Type your password here">
+                                                      
+                             </div>
+
+                            <div class='form-group'>
+                            <label for="Cpassword">Confirm Password:</label>
+                                <input ng-model='userR.confirmPassword' class='form-control' type="password" placeholder="Type your password here">
+                                                    
+                            </div>
+                                            
+                            <div class='form-group'>
+                                <label for="email">Email Id:</label>
+                                    <input ng-model='userR.email'class='form-control' type="email" placeholder="Type your emailid here">
+                                                  
+                             </div>
+                                            
+                            <div class='form-group'>
+                                <label for="role">Role:</label>
+                                    <input type="radio" ng-model="userR.role" name="role" value="teacher" checked>Teacher<br>
+                                    <input type="radio" ng-model="userR.role" name="role" value="student">Student<br>
+                                              
+                            </div>
+                                           
+                                            
+                                               
+                        </div>
+                        
+                        <div id="section2">
+                            <h1>Login</h1>
+                            <div class='form-group'>
+                                <label for="username">Username:</label>
+                                    <input ng-model='userL.username' type="text" class='form-control' placeholder="Type your name here">
+                                                        
+                        </div>
+                                            
+                            <div class='form-group'>
+                                <label for="password">Password:</label>
+                                    <input ng-model='userL.password' class='form-control' type="password" placeholder="Type your password here">
+                                                      
+                             </div>
+                                               
+                                               
+                             </div>
+                        
+                                 <button ng-click="register()" id="register" class='btn btn-primary mr-2'>Register</button>
+                                <button ng-click="login()" id="login" class='btn btn-primary mr-2'>Login</button>
+                                       
+                             </div>
+                        </div>
+                     </div>
+
+                     {{userR}}
+                     <hr>
+                     {{userL}}
+
+            </div>
+
+            <!-- <script>
+                var loginFlag=true
+                $("#auth").ready(function(){
+                    console.log("ready")
+                    $("#register").ready(function() {
+                 $("#section1").slideToggle(50);
+             
+             });
+         $("#register").click(function() {
+                 $("#section2").slideToggle(2000);
+                 $("#section1").slideToggle(2000);
+             
+             });
+             $("#login").click(function() {
+                 $("#section1").slideToggle(2000);
+                 $("#section2").slideToggle(2000);
+             });
+         });
+             </script> -->
