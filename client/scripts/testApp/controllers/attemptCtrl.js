@@ -1,6 +1,7 @@
-testApp.controller("attemptCtrl",["$scope","$rootScope","$window","testOps","answerOps",
-function($scope, $rootScope, $window, testOps, answerOps){
+testApp.controller("attemptCtrl",["$scope","$rootScope","$window","testOps","answerOps","reviewOps",
+function($scope, $rootScope, $window, testOps, answerOps, reviewOps){
 
+    $scope.revFlag = false;
     if($rootScope.loggedInT)$window.location.href = "#/dashboard"
     // var testEnd = false;
     $scope.totalDuration
@@ -36,7 +37,8 @@ function($scope, $rootScope, $window, testOps, answerOps){
             // review?
             // clearTimeout(testEnd)
             // clearTimeout(timer)
-            $window.location.href = "#/dashboard"
+            $scope.revFlag = true;
+            // $window.location.href = "#/dashboard"
         }).catch((err)=>{
             console.log(err)
             $scope.error = err.message
@@ -91,5 +93,26 @@ function($scope, $rootScope, $window, testOps, answerOps){
         $scope.currentQuestion = $scope.questions[$scope.currentIndex]
     }
 
+    $scope.sendReview=()=>{
+        var review = $scope.review
+        document.querySelector("#review").disabled = true
+        reviewOps.analyse(review).then((data)=>{
+            var sentiment = data.result
+            reviewOps.sendRev(localStorage.testApp, $routeParams.testid, review, sentiment).then((data)=>{
+                $window.location.href = "#/dashboard"
+            }).catch((err)=>{
+                $scope.error = err.message
+                document.querySelector("#review").disabled = false
+            })
+
+        }).catch((err)=>{
+            $scope.error = "Error in review analysis"
+            document.querySelector("#review").disabled = false
+        })
+    }
+
+    $scope.cancel = ()=>{
+        $window.location.href = "#/dashboard"
+    }
 
 }])
