@@ -1,5 +1,5 @@
 const nodemailer=require("nodemailer");
-//const roleRightsOps=require("../helpers/roleRightsCrud");
+
 
 function sendEmails(sub,msg,rec,resp,cb){  // console.log(sub,msg,rec);
     nodemailer.createTestAccount((err,acc)=>{
@@ -7,12 +7,12 @@ function sendEmails(sub,msg,rec,resp,cb){  // console.log(sub,msg,rec);
         var trans=nodemailer.createTransport({
             service:"gmail",
             auth:{
-                user:"saini2.arpan@gmail.com",
-                pass:"A90hilapts"
+                user:"abc@xyz.com",
+                pass:"******"
             }
         });
         var mailOptions={
-            from:"saini2.arpan@gmail.com",
+            from:"abc@xyz.com",
             to:rec,
             subject:sub,
             html:msg
@@ -21,9 +21,9 @@ function sendEmails(sub,msg,rec,resp,cb){  // console.log(sub,msg,rec);
             console.log("success: ",info); 
             if(cb)cb(resp);
 
-        }).catch(function(err){//rollback required
+        }).catch(function(err){
             if(resp)resp.status(500).json({"message":"cant send mail: ",err});
-            else console.log(err); //winston
+            else console.log(err); 
         });
     })
 
