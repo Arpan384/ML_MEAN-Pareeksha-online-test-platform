@@ -35,7 +35,7 @@ def textProcessing(df):
         
     return wordsList
 
-dataset = pd.read_csv('imdb_labelled.txt', sep='\t', header=None)
+dataset = pd.read_csv('reviewDataset.txt', sep='\t', header=None)
 df = pd.DataFrame(dataset)
 df.columns = ['review', 'sentiment']
 
