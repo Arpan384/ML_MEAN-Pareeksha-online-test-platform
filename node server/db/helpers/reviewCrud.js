@@ -6,6 +6,7 @@ const sendEmails = require("../../utils/nodemailer")
 
 const reviewOps = {
     sendRev (req,res){
+        // console.log(req)
         if(req.token==undefined  || jsonWebToken.verifyToken(req.token)==null){
             res.status(403).json({"message":"Illegal action", "promptlogin":true})
         }
@@ -20,6 +21,7 @@ const reviewOps = {
                             else{
                                 if(profile){
                                     const review = req.review;
+                                    // console.log(review)
                                     sendEmails(`Review for your test (${doc.name})`, `${username} rated your test (${doc.name}) as ${review.sentiment} and wrote:\n ${review.content}\n`, profile.email)
                                     res.status(200).json({"message":"Review sent successfully"})
                                 }

@@ -56,6 +56,7 @@ const userOps={
             User.findOne({username}, (err,doc)=>{
                 if(err)res.status(500).json({"message":"Error in profile fetch", "error":err})
                 else if(doc){
+                    
                     testOps.fetchAll(doc, res);
                 }
                 else res.status(404).json({"message":"User not found"})
@@ -73,6 +74,7 @@ const userOps={
                 else if(doc){
                     var newPassword = req.user.newpassword;
                     var newEmail = req.user.newemail;
+                    console.log("new email",newEmail);
                     var oldPassword = req.user.oldpassword;
                     if(newEmail == undefined)newEmail= doc.email
                     if(newPassword == undefined)newPassword = oldPassword

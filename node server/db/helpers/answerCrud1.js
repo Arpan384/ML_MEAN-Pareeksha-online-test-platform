@@ -42,7 +42,7 @@ const answerOps = {
                                     "chosen":answers[ques._id]
                                 }
                                 if(ansObj.chosen==ques.correct){
-                                    scored=ques.score;
+                                    scored+=ques.score;
                                     ansObj["score"]=ques.score;
                                 }
                                 else ansObj["score"]=0;

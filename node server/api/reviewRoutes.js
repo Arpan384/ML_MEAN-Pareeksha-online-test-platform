@@ -6,4 +6,4 @@ reviewRoutes.post('/send',(req,res)=>{
     revOps.sendRev(req.body,res);
 })
 
-module.exports=answerRoutes;
+module.exports=reviewRoutes;
