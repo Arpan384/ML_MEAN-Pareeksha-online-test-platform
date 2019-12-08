@@ -9,6 +9,7 @@ function($http, $q, REGISTER_USER, LOGIN_USER, FETCH_PROFILE, UPDATE_PASSWORD){
                 defer.resolve(data.data);
             }).catch((err)=>{
                 defer.reject(err.data);
+                console.log("reject",err.data);
             })
             return defer.promise;
         },
@@ -32,8 +33,8 @@ function($http, $q, REGISTER_USER, LOGIN_USER, FETCH_PROFILE, UPDATE_PASSWORD){
             })
             return defer.promise
         },
-        update(token, newPwd, oldPwd){
-            var req = {"token":token, "user":{"newpassword":newPwd, "oldpassword":oldPwd}}
+        update(token, newPwd, oldPwd,newEmail){
+            var req = {"token":token, "user":{"newpassword":newPwd, "oldpassword":oldPwd,"newemail":newEmail}}
             let defer = $q.defer();
             $http.post(UPDATE_PASSWORD, req).then((data)=>{
                 defer.resolve(data.data)
